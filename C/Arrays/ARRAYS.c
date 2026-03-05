@@ -291,3 +291,72 @@ int main(){
     }
     return 0;
 }
+
+//Insertion Sort
+#include<stdio.h>
+int main(){
+    int n,i;
+    scanf("%d",&n);
+    int a[n];
+    for(i=0;i<n;i++){
+        scanf("%d",&a[i]);
+    }
+    for(i=1;i<n;i++){
+        int key=a[i];
+        int prev=i-1;
+        while(prev>=0 && a[prev]>key){
+            a[prev+1]=a[prev];
+            prev--;
+        }
+        a[prev+1]=key;
+    }
+    return 0;
+}
+
+//Selection Sort (Smallest Element Approach)
+#include<stdio.h>
+int main(){
+    int n,i,j,temp;
+    scanf("%d",&n);
+    int a[n];
+    for(i=0;i<n;i++){
+        scanf("%d",&a[i]);
+    }
+    for(i=0;i<n-1;i++){
+        int smallestIdx=i;
+            for(j=i+1;j<n;j++){
+                    if(a[j]<a[smallestIdx]){
+                        smallestIdx=j;
+                    }
+            }
+        temp=a[i];
+        a[i]=a[smallestIdx];
+        a[smallestIdx]=temp;
+        
+    }
+    return 0;
+}
+
+//Selection Sort (Largest Element Approach)
+#include<stdio.h>
+int main(){
+    int n,i,j,temp;
+    scanf("%d",&n);
+    int a[n];
+    for(i=0;i<n;i++){
+        scanf("%d",&a[i]);
+    }
+    for(i=n-1;i>0;i--){
+        int largestIdx=i;
+        for(j=i-1;j>=0;j--){
+            if(a[j]>a[largestIdx]){
+                largestIdx=j;
+            }
+        }
+        temp=a[i];
+        a[i]=a[largestIdx];
+        a[largestIdx]=temp;
+    }
+    return 0;
+}
+
