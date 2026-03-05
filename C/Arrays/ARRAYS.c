@@ -360,3 +360,50 @@ int main(){
     return 0;
 }
 
+//Quick Sort
+#include<stdio.h>
+void swap(int *x,int *y){
+    int temp;
+    temp=*x;
+    *x=*y;
+    *y=temp;
+}
+int partition(int a[],int start, int end){
+    int indx=start-1;
+    int j;
+    int pivot=a[end];
+    for(j=start;j<end;j++){
+        if(a[j]<=pivot){
+            indx++;
+            swap(&a[j],&a[indx]);
+        }
+    }
+    indx++;
+    swap(&a[indx],&a[end]);
+    return indx;
+}
+
+void quickSort(int a[],int start,int end){
+    if(start<end){
+        int pivIndx;
+        pivIndx=partition(a,start,end);
+        quickSort(a,start,pivIndx-1);
+        quickSort(a,pivIndx+1,end);
+    }
+}
+
+
+int main(){
+    int n,i;
+    scanf("%d",&n);
+    int a[n];
+    for(i=0;i<n;i++){
+        scanf("%d",&a[i]);
+    }
+    quickSort(a,0,n-1);
+    for(i=0;i<n;i++){
+        printf("%d ",a[i]);
+    }
+    return 0;
+}
+
