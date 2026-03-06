@@ -409,6 +409,52 @@ int main(){
 
 //Merge Sort
 #include<stdio.h>
-void mergeSort(arr[],start,end){
+
+void merge(int a[],int start,int mid,int end){
+    int temp[end-start+1];
+    int i=start;
+    int j=mid+1;
+    int k=0;
+    while(i<=mid && j<=end){
+        if(a[i]<=a[j]){
+            temp[k]=a[i];
+            i++;
+        }
+        else{
+            temp[k]=a[j];
+            j++;
+        }
+        k++;
+    }
+    /*adding remaining elements*/
+    while(i<=mid){
+        temp[k]=a[i];
+        i++;
+        k++;
+    }
+    while(j<=end){
+        temp[k]=a[j];
+        j++;
+        k++;
+    }
+    /*copying elements back to original array*/
+    for(int x=start;x<=end;x++){
+        a[x]=temp[x-start];
+    }
+}
+
+
+void mergeSort(int arr[],int start,int end){
+    if(start<end){
+        int mid=start+(end-start)/2;
+        mergeSort(arr,start,mid);
+        mergeSort(arr,mid+1,end);
+        merge(arr,start,mid,end);
+    }
+}
+
+
+int main(){
     
+    return 0;
 }
