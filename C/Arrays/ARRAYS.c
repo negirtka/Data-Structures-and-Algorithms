@@ -407,3 +407,8 @@ int main(){
     return 0;
 }
 
+//Merge Sort
+#include<stdio.h>
+void mergeSort(arr[],start,end){
+    
+}
