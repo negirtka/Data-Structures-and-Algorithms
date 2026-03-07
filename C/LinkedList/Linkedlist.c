@@ -43,17 +43,18 @@ int main(){
 
 //Creating Doubly linked list
 #include<stdio.h>
+#include<stdlib.h>
 struct node{
     int data;
-    struct node *prev;
     struct node *next;
+    struct node *prev;
 };
 int main(){
     struct node *head=NULL;
     struct node *temp;
     struct node *newnode;
     
-    int n,i,;
+    int n,i;
     printf("Enter number of Nodes: ");
     scanf("%d",&n);
     
@@ -121,7 +122,9 @@ int main(){
     }
     temp->next=head;    //Making singly linkedlist CIRCULAR
     printf("Circular LinkedList: ");
-    temp=head;
+    if(head!=NULL){
+    temp->next=head;
+    }
     do{
         printf("%d->",temp->data);
         temp=temp->next;
